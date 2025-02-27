@@ -1,10 +1,13 @@
 import { CheckSquare, Home, List } from 'lucide-react'
+import { useContext } from 'react'
 import { FaRegStar } from 'react-icons/fa'
 import { FiUser } from 'react-icons/fi'
-import { IoBagCheck, IoSearch } from 'react-icons/io5'
+import { IoBagCheck } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import { CardContext } from '../Context/ContextProvider'
 import DarkMode from './DarkMode'
 const Navbar = () => {
+	const { card } = useContext(CardContext)
 	return (
 		<div>
 			<div className='w-full h-20 bg-white/25 dark:bg-white/5 border-b border-b-gray-300 dark:border-b-gray-600 fixed inset-0 z-50 backdrop-blur-md'>
@@ -40,24 +43,17 @@ const Navbar = () => {
 					</ul>
 					<div className='flex items-center gap-3'>
 						<ul className='flex items-center gap-2'>
-							<li>
-								<div className='flex items-center w-full max-w-md mx-auto py-2 px-3 dark:bg-black/10  rounded-full shadow-lg border dark:border-gray-400'>
-									<input
-										type='text'
-										placeholder='Поиск товаров...'
-										className='flex px-2 border-none focus:ring-0 focus:outline-none dark:text-gray-200'
-									/>
-									<IoSearch className='dark:text-white' />
-								</div>
-							</li>
 							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group'>
 								<FaRegStar className='dark:text-white text-xl text-black group-hover:text-white' />
 							</li>
 							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group'>
 								<FiUser className='dark:text-white text-xl text-black group-hover:text-white' />
 							</li>
-							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group'>
+							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group flex'>
 								<IoBagCheck className='dark:text-white text-xl text-black group-hover:text-white' />
+								<sup className='dark:text-white text-[13px]'>
+									{card.length}
+								</sup>
 							</li>
 						</ul>
 						<div className='flex gap-1 '>
