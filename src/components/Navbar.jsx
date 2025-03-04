@@ -22,20 +22,20 @@ const Navbar = () => {
 
 					<ul className='flex items-center gap-5'>
 						<Link to={'/'}>
-							<li className='flex items-center gap-2 dark:text-white font-body cursor-pointer transition-all duration-300 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-black/60 rounded-xl px-4 py-2 shadow-sm hover:shadow-md'>
+							<li className='flex items-center gap-2 dark:text-white font-body cursor-pointer transition-all duration-300 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-black/60 rounded-md px-4 py-2 shadow-sm hover:shadow-md'>
 								<Home className='w-5 h-5 text-blue-500' />
 								<span>Все товары</span>
 							</li>
 						</Link>
 
 						<Link to={'/category-page'}>
-							<li className='flex items-center gap-2 dark:text-white font-body cursor-pointer transition-all duration-300 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-black/60 rounded-xl px-4 py-2 shadow-sm hover:shadow-md'>
+							<li className='flex items-center gap-2 dark:text-white font-body cursor-pointer transition-all duration-300 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-black/60 rounded-md px-4 py-2 shadow-sm hover:shadow-md'>
 								<List className='w-5 h-5 text-green-500' />
 								<span>По категориям</span>
 							</li>
 						</Link>
 						<Link to={'/'}>
-							<li className='flex items-center gap-2 dark:text-white font-body cursor-pointer transition-all duration-300 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-black/60 rounded-xl px-4 py-2 shadow-sm hover:shadow-md'>
+							<li className='flex items-center gap-2 dark:text-white font-body cursor-pointer transition-all duration-300 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-black/60 rounded-md px-4 py-2 shadow-sm hover:shadow-md'>
 								<CheckSquare className='w-5 h-5 text-purple-500' />
 								<span>Выбрано</span>
 							</li>
@@ -46,15 +46,21 @@ const Navbar = () => {
 							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group'>
 								<FaRegStar className='dark:text-white text-xl text-black group-hover:text-white' />
 							</li>
-							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group'>
+							<Link
+								to={'/profile'}
+								className='rounded-md p-1 hover:bg-black/70 cursor-pointer group'
+							>
 								<FiUser className='dark:text-white text-xl text-black group-hover:text-white' />
-							</li>
-							<li className='rounded-md p-1 hover:bg-black/70 cursor-pointer group flex'>
+							</Link>
+							<Link
+								to={'/basket'}
+								className='rounded-md p-1 hover:bg-black/70 cursor-pointer group flex'
+							>
 								<IoBagCheck className='dark:text-white text-xl text-black group-hover:text-white' />
 								<sup className='dark:text-white text-[13px]'>
 									{card.length}
 								</sup>
-							</li>
+							</Link>
 						</ul>
 						<div className='flex gap-1 '>
 							<DarkMode />

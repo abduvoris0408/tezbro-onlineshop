@@ -3,7 +3,9 @@ import { BiLike } from 'react-icons/bi'
 import { FaChevronRight, FaRegStar } from 'react-icons/fa'
 import { IoSearch } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 import CompactSlider from '../components/CompactSlider'
+import 'react-toastify/dist/ReactToastify.css'
 import { CardContext } from '../Context/ContextProvider'
 import { apiClient } from '../utils/apiservice'
 
@@ -11,7 +13,7 @@ const Clothes = () => {
 	const [data, setData] = useState([])
 	const [searchQuery, setSearchQuery] = useState('')
 	const [loading, setLoading] = useState(false)
-	const { setCard, card } = useContext(CardContext)
+	const { pushCart } = useContext(CardContext)
 
 	const getProducts = async (query = '') => {
 		setLoading(true)
@@ -41,6 +43,7 @@ const Clothes = () => {
 
 	return (
 		<div className='pt-18 bg-white/25 dark:bg-black/95'>
+			<ToastContainer />
 			<CompactSlider />
 			<div className='container w-[90%] mx-auto'>
 				<div className='flex items-center justify-between'>
@@ -65,7 +68,6 @@ const Clothes = () => {
 					</p>
 				</div>
 			</div>
-
 			{loading ? (
 				<div className='flex justify-center items-center py-16'>
 					<div className='w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin'></div>
@@ -102,9 +104,20 @@ const Clothes = () => {
 								</div>
 								<button
 									onClick={() => {
-										let current = [...card]
-										current.push(item)
-										setCard(current)
+										pushCart(item)
+
+										toast.success(
+											'Buyurtma savatchaga qo‘shildi! ',
+											{
+												position: 'top-center',
+												autoClose: 3000,
+												hideProgressBar: false,
+												closeOnClick: true,
+												pauseOnHover: true,
+												draggable: true,
+												theme: 'colored',
+											}
+										)
 									}}
 									className='px-2 py-1 bg-blue-400 rounded-md text-white cursor-pointer active:bg-blue-600'
 								>
